@@ -1,4 +1,4 @@
-import { CREATE_PROJECT } from "../actions/types";
+import { CREATE_PROJECT, CREATE_PROJECT_ERROR } from "../actions/types";
 
 
 const initialState ={
@@ -13,6 +13,10 @@ const projectReducer = (state=initialState, action) => {
     switch (action.type) {
         case CREATE_PROJECT: 
         console.log('created project', action.payload)
+
+        case CREATE_PROJECT_ERROR: 
+        console.log('created project error', action.payload)
+        
         
                 
         default: return state

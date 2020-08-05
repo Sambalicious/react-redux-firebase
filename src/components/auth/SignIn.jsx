@@ -1,7 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../redux/actions/authAction';
+import { useFirebase } from 'react-redux-firebase';
+import { useSelector } from 'react-redux';
 
 const SignIn = () => {
+   const dispatch = useDispatch();
+   const firebase = useFirebase();
 
+const error = useSelector(state => state.auth.authError)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -9,7 +16,7 @@ const SignIn = () => {
 
     const handleFormSubmit = (e)=>{
         e.preventDefault();
-        console.log(email, password)
+       dispatch(signIn(email, password, firebase));
     }
     
     return (
@@ -26,6 +33,11 @@ const SignIn = () => {
                 </div>
                 <div className="input-field">
                     <button className="btn pink-lighten-1 z-depth-0">Login</button>
+                </div>
+                <div className="red-text center">
+                    {
+                        error ? <p>{error} </p> : null
+                    }
                 </div>
             </form>
         </div>

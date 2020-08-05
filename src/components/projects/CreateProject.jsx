@@ -1,9 +1,14 @@
 import React, {useState} from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { createProject } from '../../redux/actions/projectAction'
+import { useDispatch } from 'react-redux';
+import { createProject } from '../../redux/actions/projectAction';
+import { useFirestore } from "react-redux-firebase";
+import  { useHistory } from 'react-router-dom'
 
 const CreateProject = () => {
-
+    const dispatch = useDispatch();
+    const history = useHistory();
+    
+    const firestore = useFirestore();
 
     const [title,setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -15,16 +20,20 @@ const CreateProject = () => {
     const handleContent = (e) =>{
         setContent(e.target.value);
     }
-    const project = {
-        title, content
-    }
    
-    const dispatch = useDispatch(dispatch=>dispatch(createProject(project)))
+   
+    
 
     const handleFormSubmit = (e) =>{
+        const project = {
+            title, content
+        }
         e.preventDefault();
-        dispatch(createProject(project))
-        console.log(project)
+        dispatch(createProject(project, firestore))
+        console.log(dispatch)
+
+        history.push("/")
+
     }
 
 
@@ -38,7 +47,7 @@ const CreateProject = () => {
             </div>
             <div className="input-field">
                 <label htmlFor="password">Project Content</label>
-                <textarea name="" onChange={handleContent} value={content} className='materialize-textarea'></textarea>
+                <textarea onChange={handleContent} value={content} className='materialize-textarea'></textarea>
             </div>
             <div className="input-field">
                 <button className="btn pink-lighten-1 z-depth-0">Create</button>

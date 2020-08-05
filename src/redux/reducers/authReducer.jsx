@@ -1,18 +1,30 @@
 
 
-import { SIGN_IN, SIGN_OUT, SIGN_UP } from '../actions/types';
+import { SIGN_UP_ERROR,  LOGIN_SUCCESS, LOGIN_ERROR, SIGN_UP_SUCCESS,  SIGN_OUT_SUCCESS,  SIGN_OUT_ERROR } from '../actions/types';
 const initialState = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    authError:null
 }
 const authReducer = (state=initialState,action) => {
   switch (action.type) {
-      case SIGN_IN: return {
-
+      case LOGIN_SUCCESS : return {
+        ...state, authError: null
       }
-      case SIGN_OUT: return {
+      case LOGIN_ERROR: return {
+          ...state, authError: "Login Failed"
+    }
+    case SIGN_OUT_SUCCESS: 
+    console.log('signed out succesfully');
+    return {
+      ...state
+     
+    }
+  
+    case SIGN_UP_SUCCESS: return {
 
     }
-    case SIGN_UP: return {
+    
+    case SIGN_UP_ERROR: return {
 
     }
   
