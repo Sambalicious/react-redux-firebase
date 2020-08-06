@@ -8,9 +8,13 @@ import { useFirestoreConnect } from "react-redux-firebase";
 
   const DashBoard = () => {
   
-    useFirestoreConnect(["projects"]);
+    useFirestoreConnect([{collection:"projects", orderBy: ["createdAt", 'desc']}]);
+   
   const projects = useSelector((state) => state.firestore.ordered.projects);
+  
  
+ 
+
 
     return ( 
         

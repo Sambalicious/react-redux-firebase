@@ -1,6 +1,6 @@
 
 
-import { SIGN_UP_ERROR,  LOGIN_SUCCESS, LOGIN_ERROR, SIGN_UP_SUCCESS,  SIGN_OUT_SUCCESS,  SIGN_OUT_ERROR } from '../actions/types';
+import { SIGN_UP_ERROR,  LOGIN_SUCCESS, LOGIN_ERROR, SIGN_UP_SUCCESS,  SIGN_OUT_SUCCESS } from '../actions/types';
 const initialState = {
     isLoggedIn: false,
     authError:null

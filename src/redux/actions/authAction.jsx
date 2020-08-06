@@ -1,5 +1,5 @@
 
-import { SIGN_OUT_SUCCESS, SIGN_OUT_ERROR, SIGN_UP_SUCCESS, SIGN_UP_ERROR } from "./types"
+import { SIGN_OUT_SUCCESS,  SIGN_UP_SUCCESS, SIGN_UP_ERROR } from "./types"
 
 
 export const signIn = (data, firebase) => {
