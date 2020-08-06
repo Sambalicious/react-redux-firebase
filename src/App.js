@@ -6,6 +6,8 @@ import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import CreateProject from './components/projects/CreateProject';
 import DashBoard from './components/dashboard/Dashboard';
+import ProtectedRoute from './config/ProtectedRoute';
+import NotFound from './config/NotFound';
 
 
 
@@ -15,11 +17,14 @@ function App() {
     <BrowserRouter>
           <Navbar />
         <Switch>
-        <Route path='/project/:id' exact component={ProjectDetail} />
-        <Route path='/signIn' component={SignIn} />
-        <Route path='/signUp' component={SignUp} />
-        <Route path='/create' component={CreateProject} />
-        <Route path='/' component={DashBoard} />
+              
+        
+        <Route path="/signin" component={SignIn} />
+        <Route path="/signup" component={SignUp} />
+        <ProtectedRoute path="/create" component={CreateProject} />
+        <ProtectedRoute path="project/:id" component={ProjectDetail} />
+        <ProtectedRoute path="/" component={DashBoard} />
+        <Route path="*" component={NotFound} />
          
         </Switch>
     </BrowserRouter>

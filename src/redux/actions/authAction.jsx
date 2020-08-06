@@ -1,4 +1,4 @@
-import { useFirebase } from "react-redux-firebase"
+
 import { SIGN_OUT_SUCCESS, SIGN_OUT_ERROR } from "./types"
 
 

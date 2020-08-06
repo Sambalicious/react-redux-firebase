@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { signIn } from '../../redux/actions/authAction';
 import { useFirebase } from 'react-redux-firebase';
@@ -9,6 +10,7 @@ const SignIn = () => {
    const firebase = useFirebase();
 
 const error = useSelector(state => state.auth.authError)
+const auth = useSelector(state => state.firebase.auth)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -18,6 +20,7 @@ const error = useSelector(state => state.auth.authError)
         e.preventDefault();
        dispatch(signIn(email, password, firebase));
     }
+    if(auth.uid) return <Redirect to="/" />
     
     return (
         <div className="container">
