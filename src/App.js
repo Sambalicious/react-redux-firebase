@@ -12,6 +12,7 @@ import NotFound from './config/NotFound';
 
 
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -22,9 +23,9 @@ function App() {
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
         <ProtectedRoute path="/create" component={CreateProject} />
-        <ProtectedRoute path="project/:id" component={ProjectDetail} />
-        <ProtectedRoute path="/" component={DashBoard} />
-        <Route path="*" component={NotFound} />
+        <ProtectedRoute exact path="/project/:id" component={ProjectDetail} />
+        <ProtectedRoute exact path="/" component={DashBoard} />
+         <Route path="*" component={NotFound} /> 
          
         </Switch>
     </BrowserRouter>

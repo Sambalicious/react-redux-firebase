@@ -7,13 +7,16 @@ import { CREATE_PROJECT} from "./types"
 
 
 export const createProject = (project,firestore) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const profile = getState().firebase.profile;
+
+        const authorId = getState().firebase.auth.uid
         firestore.collection('projects').add({
             ...project, 
-            authorFirstname: 'samuel',
-            authorLastname: 'Ninja',
+            authorFirstname: profile.firstName,
+            authorLastname: profile.lastName,
             createdAt: new Date(),
-            authorId: 2
+            authorId
         }).then(()=>{
             dispatch({type: CREATE_PROJECT, payload: project})
         }).catch(err=>{

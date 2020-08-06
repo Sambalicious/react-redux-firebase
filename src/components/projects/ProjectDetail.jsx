@@ -1,6 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import { useFirestoreConnect } from "react-redux-firebase";
+import moment from 'moment';
 
 const  ProjectDetail = (props) =>{
     useFirestoreConnect(["projects"]);
@@ -10,6 +11,7 @@ const  ProjectDetail = (props) =>{
       const project = projects ? projects[id] : null
       return project
      } );
+     console.log(project)
      
 
      if(project){
@@ -24,7 +26,7 @@ const  ProjectDetail = (props) =>{
                     </div>
                     <div className="card-action grey lighten-4 grey-text">
                         <div>Posted by {project.authorFirstname} {project.authorLastname} </div>
-                        <div>may 19, 8pm</div>
+                        <div>{moment(project.createdAt.toDate()).calendar()} </div>
                     </div>
                 </div>
             </div>

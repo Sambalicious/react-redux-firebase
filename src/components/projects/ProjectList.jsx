@@ -3,8 +3,8 @@ import ProjectSummary from './ProjectSummary';
 import { Link } from 'react-router-dom';
 
 const ProjectList = ({data}) => {
-console.log(data)
 
+console.log(data)
     return ( 
         <div className="project-list section">
           {

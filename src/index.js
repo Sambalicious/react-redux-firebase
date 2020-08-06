@@ -9,7 +9,7 @@ import firebase from './config/firebaseConfig'
 import { createFirestoreInstance } from "redux-firestore";
 
 const rrfConfig = {
-  userProfile : "projects",
+  userProfile : "users",
   useFirestoreForProfile: true
 };
 

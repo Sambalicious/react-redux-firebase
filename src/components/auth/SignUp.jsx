@@ -27,7 +27,7 @@ const SignUp = () => {
 
     const handleFormSubmit = (e)=>{
         e.preventDefault();
-        console.log(data)
+        
         dispatch(signUp(firebase, firestore, data));
     }
     if(auth.uid) return <Redirect to="/" />
