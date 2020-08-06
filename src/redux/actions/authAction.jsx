@@ -1,5 +1,5 @@
 
-import { SIGN_OUT_SUCCESS, SIGN_OUT_ERROR } from "./types"
+import { SIGN_OUT_SUCCESS, SIGN_OUT_ERROR, SIGN_UP_SUCCESS, SIGN_UP_ERROR } from "./types"
 
 
 export const signIn = (email, password, firebase) => {
@@ -19,5 +19,25 @@ export const signOut = (firebase) => {
         firebase.auth().signOut()
         .then(()=> dispatch({type: SIGN_OUT_SUCCESS}))
 
+    }
+}
+
+export const signUp = (firebase,firestore, data) => {
+    return (dispatch) => {
+        firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
+        .then((response)=> {
+            console.log(response);
+            return firestore.collection('users').doc(response.user.uid).set({
+                firstName: data.firstName,
+                lastName: data.lastName,
+                initial: data.firstName[0] + data.lastName[0]
+               
+            })
+            }).then(()=>{
+                dispatch({type: SIGN_UP_SUCCESS})
+            }).catch(err =>{
+                dispatch( {type: SIGN_UP_ERROR, err})
+            })
+            
     }
 }

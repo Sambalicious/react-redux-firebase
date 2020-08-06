@@ -1,6 +1,5 @@
 import React from 'react';
-import { useFirestoreConnect } from "react-redux-firebase";
-import {useSelector, useDispatch} from 'react-redux';
+
 
 const ProjectSummary = ({project}) => {
        

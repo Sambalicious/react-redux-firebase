@@ -5,7 +5,7 @@ import { signIn } from '../../redux/actions/authAction';
 import { useFirebase } from 'react-redux-firebase';
 import { useSelector } from 'react-redux';
 
-const SignIn = () => {
+const SignIn = (props) => {
    const dispatch = useDispatch();
    const firebase = useFirebase();
 
@@ -18,7 +18,7 @@ const auth = useSelector(state => state.firebase.auth)
 
     const handleFormSubmit = (e)=>{
         e.preventDefault();
-       dispatch(signIn(email, password, firebase));
+       dispatch(signIn(email, password, props));
     }
     if(auth.uid) return <Redirect to="/" />
     
