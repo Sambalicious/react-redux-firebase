@@ -2,11 +2,8 @@ import { CREATE_PROJECT, CREATE_PROJECT_ERROR } from "../actions/types";
 
 
 const initialState ={
-    projects: [
-        {id: '1', title: 'i love you' ,content: 'hello are you there?'},
-        {id: '2', title: 'i hate soyabeans' , content: 'what is your favourite food?'},
-        {id: '3', title: 'i admire Tonu Elumemu', content: 'Hardwork pays. i will tell you a story later'}
-    ]
+    isloading: true,
+    error: ""
 }
 
 const projectReducer = (state=initialState, action) => {
@@ -16,7 +13,7 @@ const projectReducer = (state=initialState, action) => {
         break;
         case CREATE_PROJECT_ERROR: 
         console.log('created project error', action.payload)
-        
+        return {...state, error: action.payload}
         break;
                 
         default: return state
